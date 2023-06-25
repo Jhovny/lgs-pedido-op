@@ -2,16 +2,15 @@ package com.platzi.springboot.repository;
 
 
 import com.platzi.springboot.entity.Shop;
-import com.platzi.springboot.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 
-import java.util.List;
 
 @Repository
-public interface ShopRepository extends JpaRepository<Shop, Integer> {
+public interface ShopRepository extends ReactiveCrudRepository<Shop, Integer> {
 
-    List<Shop> findByNameLike(String name);
+    Flux<Shop> findByNameLike(String name);
 
-    List<Shop> findByBusinessNameLike(String name);
+    Flux<Shop> findByBusinessNameLike(String name);
 }

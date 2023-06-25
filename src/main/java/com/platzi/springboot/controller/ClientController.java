@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -23,14 +24,14 @@ public class ClientController {
     ShopRepository shopRepository;
 
     @GetMapping("/search")
-    public ResponseEntity<List<Shop>> getShopByName(@RequestParam String name){
-       List<Shop> listShop= shopRepository.findByNameLike("%".concat(name).concat("%"));
+    public ResponseEntity<Flux<Shop>> getShopByName(@RequestParam String name){
+       Flux<Shop> listShop= shopRepository.findByNameLike("%".concat(name).concat("%"));
 
         return new ResponseEntity<>(listShop, HttpStatus.OK);
     }
     @GetMapping("/search-business-name")
-    public ResponseEntity<List<Shop>> getShopByBusinessName(@RequestParam String name){
-        List<Shop> listShop= shopRepository.findByBusinessNameLike("%".concat(name).concat("%"));
+    public ResponseEntity<Flux<Shop>> getShopByBusinessName(@RequestParam String name){
+        Flux<Shop> listShop= shopRepository.findByBusinessNameLike("%".concat(name).concat("%"));
 
         return new ResponseEntity<>(listShop, HttpStatus.OK);
     }

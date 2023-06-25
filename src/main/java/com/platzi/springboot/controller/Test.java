@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class Test {
     UserRepository bookRepository;
 
     @GetMapping("/book")
-    public ResponseEntity<List<User>> function(@RequestParam String title){
-       List<User> listUser= bookRepository.findByEmailLike("%".concat(title).concat("%"));
+    public ResponseEntity<Flux<User>> function(@RequestParam String title){
+       Flux<User> listUser= bookRepository.findByEmailLike("%".concat(title).concat("%"));
 
         return new ResponseEntity<>(listUser, HttpStatus.OK);
     }

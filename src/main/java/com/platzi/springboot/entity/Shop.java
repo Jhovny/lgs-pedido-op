@@ -4,15 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 import java.io.Serializable;
 
 
-@Entity
+
 @Table(name = "shops")
 @Getter
 @Setter
@@ -21,19 +21,19 @@ import java.io.Serializable;
 public class Shop implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column("id")
     private Integer id;
 
-    @Column(name = "document_number")
+    @Column("document_number")
     private String documentNumber;
 
-    @Column(name = "business_name")
+    @Column("business_name")
     private String businessName;
 
-    @Column(name = "name")
+    @Column("name")
     private String name;
 
-    @Column(name = "image_url")
+    @Column("image_url")
     private String imageUrl;
 
 

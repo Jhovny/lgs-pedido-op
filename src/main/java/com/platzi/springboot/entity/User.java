@@ -4,12 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 
 
-@Entity
+
 @Table(name = "users")
 @Getter
 @Setter
@@ -18,10 +21,10 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false, unique = true)
+    @Column("id")
     private Integer id;
 
-    @Column(name = "email")
+    @Column("email")
     private String email;
 
 
