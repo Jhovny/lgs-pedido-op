@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class Category implements Serializable {
     @Column("image_url")
     private int imageUrl;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     private List<Product> products;
 
 }

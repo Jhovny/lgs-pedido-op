@@ -8,9 +8,8 @@ import reactor.core.publisher.Flux;
 
 @Repository
 public interface CategoryRepository extends ReactiveCrudRepository<Category, Integer> {
-    Flux<Shop> findByNameLike(String name);
 
-    Flux<Shop> findByBusinessNameLike(String name);
+    Flux<Category> findByActive(int active);
 
     
 }

@@ -11,7 +11,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.io.Serializable;
 
 
-@Table(name = "product")
+@Table(name = "products")
 @Getter
 @Setter
 @AllArgsConstructor
